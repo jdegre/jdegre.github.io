@@ -69,7 +69,7 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
 			writeStartList();
           }		
           i1 = currentLine.indexOf('*');
-		  text = currentLine.slice(i1+1);
+		  text = currentLine.split('[')[1].split(']')[0];
 		  currentLine = lines[i].trim();
           i2 = currentLine.indexOf('?yaml=');
 		  i3 = currentLine.indexOf('.yaml');
