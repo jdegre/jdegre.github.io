@@ -43,6 +43,7 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
 	inList = 0;
 	readingAPIs = false;
     for (i=0; i<lines.length; i++) {
+	  console.log(lines[i]);
       currentLine = lines[i].trim();
       firstChar = '';
       if (currentLine.indexOf('<!-- APIs') >= 0) readingAPIs = true;
