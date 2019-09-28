@@ -75,7 +75,7 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
           i2 = currentLine.indexOf('?yaml=');
 		  i3 = currentLine.indexOf('.yaml');
 		  yaml = currentLine.slice(i2+6, i3+5);
-		  yamlUrl = host + repo + '/raw/' + branch + '/' + yaml;
+		  yamlUrl = host + repo + '/' + branch + '/' + yaml;
           i = i+1;
 		  writeListItem(apiIdx, text, yamlUrl); apiIdx++;
         }
