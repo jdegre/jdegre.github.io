@@ -70,7 +70,7 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
           }		
           i1 = currentLine.indexOf('*');
 		  text = currentLine.split('[')[1].split(']')[0];
-          yaml = currentLine.split('?yaml=')[1];
+          yaml = currentLine.split('?yaml=')[1].split(')')[0];
 		  yamlUrl = host + repo + '/' + branch + '/' + yaml;
 		  writeListItem(apiIdx, text, yamlUrl); apiIdx++;
         }
