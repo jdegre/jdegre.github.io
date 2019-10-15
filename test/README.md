@@ -6,6 +6,6 @@ To reproduce:
 * Load the "test.yaml" file in Swagger Editor by following the "Load test.yaml" link below
 * See lots of errors in the console
 
-[Load a.yaml](https://editor.swagger.io/?url=https://raw.githubusercontent.com/jdegre/jdegre.github.io/master/test/a.html)
+[Load a.yaml](https://editor.swagger.io/?url=https://raw.githubusercontent.com/jdegre/jdegre.github.io/master/test/a.yaml)
 
-[Load test.yaml](https://editor.swagger.io/?url=https://raw.githubusercontent.com/jdegre/jdegre.github.io/master/test/test.html)
+[Load test.yaml](https://editor.swagger.io/?url=https://raw.githubusercontent.com/jdegre/jdegre.github.io/master/test/test.yaml)
