@@ -89,7 +89,7 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
       '<p>The links below will open the Swagger Editor or Swagger UI tools, and auto-load the OpenAPI YAML file of each Network Function (NF) API.</p>' +
       '<p>The "Parse" button, next to each API, executes a real time validation of the API and its dependencies ' +
       'by invoking the <a href=\"https://github.com/APIDevTools/swagger-parser\">APIDevTools</a> Swagger Parser/Validator.</p>' +
-      '<a href=\"javascript:parseAllAPIs()\" id=\"buttStart\" class=\"button\">Parse all APIs</a><br/>';
+      '<a href=\"javascript:parse(-1)\" id=\"buttStart\" class=\"button\">Parse all APIs</a><br/>';
   }
   
   function writeHeading(i, text) {
@@ -100,7 +100,7 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
   function writeStartList() { document.body.innerHTML += '<ul>'; } 
   
   function writeListItem(i, t, y) {
-    document.body.innerHTML += '<li><a href=\"javascript:parseOneAPI('+i+')\" id=\"button'+ i +
+    document.body.innerHTML += '<li><a href=\"javascript:parse('+i+')\" id=\"button'+ i +
 	'\" class=\"minibutton\">Parse</a> ' + t + ' ' +
 	'<a href=\"https://jdegre.github.io/5GC_APIs/editor/?url='+y+'\">(Editor)</a> ' +
 	'<a href=\"https://petstore.swagger.io/?url='+y+'\">(UI)</a> ' +
@@ -110,67 +110,6 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
   }
   
   function writeEndList() { document.body.innerHTML += '</ul>'; }
-
-  var loop;
-  var buttonEnabled = true;
-  
-  function validate(index, next) {
-    new SwaggerParser().validate(apis[index].yaml)
-      .then(function(api) {
-        version = api.info.version;
-        if (version != '-') version = 'v' + version;
-        else version = '';
-        document.getElementById('result'+index).innerHTML = 
-	      '<div class="test pass">✓ OK &apos;' + api.info.title + '&apos; ' + version + '</div>';
-        if (next == true) loop.next();
-      })
-      .catch(function(err) {
-        document.getElementById('result'+index).innerHTML = 
-          '<div class="test fail">✖ '+ err.message + '</div>';
-        if (next == true) loop.next();
-    });
-  }
-  
-  function* synchronous_loop() {
-    for (i=0; i<apis.length; i++) {
-      validate(i, true);
-      yield;
-    }
-    enableButtons();
-  }
-  
-  function parseAllAPIs() {
-    if (buttonEnabled) {
-      disableButtons();
-      for (i=0; i<apis.length; i++) {
-        document.getElementById('result'+i).innerHTML = '';
-      }
-      loop = synchronous_loop();
-      loop.next();
-    }
-  }
-  
-  function enableButtons() {
-    buttonEnabled = true;
-    document.getElementById('buttStart').style.cssText = 'color: rgb(36, 41, 46);';
-    for (i=0; i<apis.length; i++) {
-      document.getElementById('button'+i).style.cssText = 'color: rgb(36, 41, 46);';
-    }
-  }
-  
-  function disableButtons() {
-    buttonEnabled = false;
-    document.getElementById('buttStart').style.cssText = 'color: rgb(192, 192, 192); background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);';
-    for (i=0; i<apis.length; i++) {
-      document.getElementById('button'+i).style.cssText = 'color: rgb(192, 192, 192); background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);';
-    }
-  }
-  
-  function parseOneAPI(index) {
-    if (buttonEnabled) {
-      document.getElementById('result'+index).innerHTML = '';
-      validate(index, false);
-    }
-  }
+ 
 </script>
 </body>
