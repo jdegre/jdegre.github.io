@@ -69,7 +69,7 @@ code::before {font-family: Segoe UI; text-align: right; background-color: white;
           i2 = currentLine.indexOf('?yaml=');
           i3 = currentLine.indexOf('.yaml');
           yaml = currentLine.slice(i2+6, i3+5);
-          yamlUrl = host + yaml;
+          yamlUrl = host + repo + '/' + branch + yaml;
           i = i+1;
           writeApiEntry(apiIdx, text, yamlUrl);
           apiIdx++;
