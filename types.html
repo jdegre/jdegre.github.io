@@ -47,29 +47,27 @@ code::before {font-family: Segoe UI; text-align: right; background-color: white;
         if (currentLine.length > 0) firstChar = currentLine.charAt(0);
         if (firstChar == '#') {
           if (inList == 1) { 
-            writeEndList(); inList = 0;
+            inList = 0;
           }
           second = '';
           if (currentLine.length > 1) second = currentLine.charAt(1);
           if (second == '#') {
             title = currentLine.substr(2).trim();
-            writeHeading(2, title);
           }
           else {
             title = currentLine.substr(1).trim();
-            writeHeading(1, title);
           }
         }
         else if (firstChar == '*') {
           if (inList == 0) {
             inList = 1;
-            writeStartList();
           }
           i1 = currentLine.indexOf('*');
           text = currentLine.split('[')[1].split(']')[0];
           yaml = currentLine.split('?yaml=')[1].split(')')[0];
           yamlUrl = host + repo + '/' + branch + '/' + yaml;
-          writeListItem(apiIdx, text, yamlUrl); apiIdx++;
+          writeApiEntry(apiIdx, text, yamlUrl);
+          apiIdx++;
         }
       }
     }
