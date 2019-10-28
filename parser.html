@@ -16,12 +16,17 @@ a.button:active {background-color: rgb(230, 235, 241); background-image: linear-
 a.minibutton {background-color: rgb(230, 235, 241); background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%); background-position: -6px 50%; background-position-x: -6px; background-position-y: 50%; background-repeat: repeat-x; background-size: 110% 110%; border-bottom-color: rgba(27, 31, 35, 0.35); border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-bottom-style: solid; border-bottom-width: 1px; border-image-outset: 0; border-image-repeat: stretch stretch; border-image-slice: 100%; border-image-source: none; border-image-width: 1; border-left-color: rgba(27, 31, 35, 0.35); border-left-style: solid; border-left-width: 1px; border-right-color: rgba(27, 31, 35, 0.35); border-right-style: solid; border-right-width: 1px; border-top-color: rgba(27, 31, 35, 0.35); border-top-left-radius: 3px; border-top-right-radius: 3px; border-top-style: solid; border-top-width: 1px; box-sizing: border-box; color: rgb(36, 41, 46); cursor: pointer; font-family: Segoe UI, Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 600; line-height: 20px; outline-width: 0px; overflow-wrap: break-word; padding-bottom: 0px; padding-left: 10px; padding-right: 10px; padding-top: 0px; text-decoration: none; text-decoration-line: none; vertical-align: top;}	
 a.minibutton:hover {background-color: rgb(230, 235, 241); background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);}
 a.minibutton:active {background-color: rgb(230, 235, 241); background-image: linear-gradient(-180deg,#d0d3d6,#e6ebf1 90%);}
+.lint.text {font-family: Consolas; font-size: 12px; width: 100%; height:auto; border: 1px solid #c0c0c0; overflow: auto; display: none; margin-top: 10px; margin-bottom: 20px;} 
+.lint.ok { color: #159626; }
+.lint.warning { color: #c00000; }
 </style>
 </head>
 <body>
 <script src="https://cdn.polyfill.io/v3/polyfill.min.js"></script>
-<script src="https://jdegre.github.io/parser/parser-v8.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/yamljs/0.3.0/yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.10.2/ajv.min.js"></script>
+<script src="https://jdegre.github.io/parser/parser191029.js"></script>
 <script>
   // (c) 2019. Jesus de Gregorio. Ericsson.
   urlParams = new URLSearchParams(location.search);
@@ -72,7 +77,8 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
           text = currentLine.split('[')[1].split(']')[0];
           yaml = currentLine.split('?yaml=')[1].split(')')[0];
           yamlUrl = host + repo + '/' + branch + '/' + yaml;
-          writeListItem(apiIdx, text, yamlUrl); apiIdx++;
+          writeListItem(apiIdx, text, yamlUrl);
+          apiIdx++;
         }
       }
     }
@@ -97,14 +103,17 @@ a.minibutton:active {background-color: rgb(230, 235, 241); background-image: lin
     if (i == 2) document.body.innerHTML += '<h2>' + text + '</h2>';
   }
   
-  function writeStartList() { document.body.innerHTML += '<ul>'; } 
+  function writeStartList() { document.body.innerHTML += '<ul>'; }
   
   function writeListItem(i, t, y) {
-    document.body.innerHTML += '<li><a href=\"javascript:parse('+i+')\" id=\"button'+ i +
-    '\" class=\"minibutton\">Parse</a> ' + t + ' ' +
-    '<a href=\"https://jdegre.github.io/5GC_APIs/editor/?url='+y+'\">(Editor)</a> ' +
-    '<a href=\"https://petstore.swagger.io/?url='+y+'\">(UI)</a> ' +
-    '<div id=\"result'+i+'\" class=\"result\"></div></li>';
+    document.body.innerHTML += '<li><a href=\"javascript:parse(' + i + ')\" id=\"buttonp' + i +
+    '\" class=\"minibutton\">Parse</a> <a href=\"javascript:lint(' + i + ')\" id=\"buttonl' + i +
+    '\" class=\"minibutton\">Lint</a>' + t + ' ' +
+    '<a href=\"https://jdegre.github.io/5GC_APIs/editor/?url=' + y +
+    '\">(Editor)</a> <a href=\"https://petstore.swagger.io/?url=' + y +
+    '\">(UI)</a> <div id=\"result' + i +
+    '\" class=\"result\"></div><br/><div class=\"lint text\" id=\"textarea' + i +
+    '\"></div></li>';
     var apiEntry = { title: t, yaml: y }
     apis.push(apiEntry);
   }
