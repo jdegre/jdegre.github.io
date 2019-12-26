@@ -29,7 +29,7 @@ h2 { font-size: 24px; font-weight: 600; line-height: 1.25; margin-bottom: 16px; 
   urlParams = new URLSearchParams(location.search);
   repo = urlParams.get('repo');
   r = document.referrer.split("?")[0].split("/");
-  if (repo == null) repo = r[4]+'/'+r[5];
+  if (repo == null) repo = r[3]+'/'+r[4];
   console.log(repo);
   if (repo == null || repo.includes('undefined')) error = 'No repository defined';
   if (typeof error !== 'undefined')
