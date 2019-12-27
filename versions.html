@@ -32,7 +32,7 @@ h2 { font-size: 24px; font-weight: 600; line-height: 1.25; margin-bottom: 16px; 
   if (repo == null) repo = r[3]+'/'+r[4];
   if (repo == null || repo.includes('undefined')) error = 'No repository defined';
   if (typeof error !== 'undefined')
-    document.body.innerHTML = '<br/><div class=\"err\">Error: ' + error + '</div><br/><br/><u>Script usage</u><p/>Query parameters:<p/><div class=\"usage\">./versions.html?<b>repo</b>=&lt...&gt</div><p/><table><tr class=\"usage-tr\"><th class=\"usage-th\">repo:</th><td class=\"usage-td\">GitLab project/repository; e.g. \'3GPP/5G_APIs\'. If not included, it is read from HTTP referrer header, if available</td></tr></table>';
+    document.body.innerHTML = '<br/><div class=\"err\">Error: ' + error + '</div><br/><br/><u>Script usage</u><p/>Query parameters:<p/><div class=\"usage\">./versions.html?<b>repo</b>=&lt...&gt</div><p/><table><tr class=\"usage-tr\"><th class=\"usage-th\">repo:</th><td class=\"usage-td\">Github user/repository; e.g. \'jdegre/5GC_APIs\'. If not included, it is read from HTTP referrer header, if available</td></tr></table>';
   else {
     makeIntro();
     versions(repo, 'github');
