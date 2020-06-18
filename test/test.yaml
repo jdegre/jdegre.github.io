@@ -22,7 +22,7 @@ components:
     Body:
       type: object
       properties:
-        p1:
+        a:
           $ref: 'a.yaml#/components/schemas/A'
-        p2:
+        b1:
           $ref: 'b.yaml#/components/schemas/B1'
