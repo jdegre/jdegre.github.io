@@ -13,6 +13,6 @@ components:
     B3:
       type: object
       properties:
-        b2:
+        p1:
           $ref: '#/components/schemas/B2'
           
