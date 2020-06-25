@@ -12,5 +12,5 @@ components:
     A:
       type: object
       properties:
-        b3:
+        p1:
           $ref: 'b.yaml#/components/schemas/B3'
