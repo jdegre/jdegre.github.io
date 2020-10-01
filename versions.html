@@ -12,6 +12,9 @@ h2 { font-size: 24px; font-weight: 600; line-height: 1.25; margin-bottom: 16px; 
 .api { text-align: left; border: 1px solid black; width: 420px; background-color: rgb(228, 233, 244); }
 .version { text-align: right; border: 1px solid black; }
 .change { background-color: #ffc45a; text-align: right; border: 1px solid black; } 
+.tooltip { background-color: red; text-align: right; border: 1px solid black; }
+.tooltip .tooltiptext { visibility: hidden; width: 400px; background-color: black; color: #fff; text-align: left; border-radius: 6px; padding-left: 20px; position: absolute; z-index: 1; margin-left: 20px; margin-top: 20px; opacity: 0; transition: opacity 0.5s; }
+.tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
 .progress {font-size: 16px; width: 100%; margin-top: 10px; margin-bottom: 20px;} 
 .usage { font-family: Lucida Console, Courier; margin-left: 50px; background-color: lavender; border-radius: 3px; padding: 16px; width: 600px; }
 .err { font-weight: bold; color: firebrick; }
@@ -25,7 +28,7 @@ h2 { font-size: 24px; font-weight: 600; line-height: 1.25; margin-bottom: 16px; 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/yamljs/0.3.0/yaml.min.js"></script>
 <script src="https://jdegre.github.io/parser/parser.js"></script>
 <script>
-  // (c) 2019. Jesus de Gregorio. Ericsson.
+  // (c) 2020. Jesus de Gregorio. Ericsson.
   urlParams = new URLSearchParams(location.search);
   repo = urlParams.get('repo');
   r = document.referrer.split("?")[0].split("/");
