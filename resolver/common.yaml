@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'Common'
+paths: {}
+components:
+  schemas:
+
+    ResponseBody:
+      type: object
+      properties:
+        network:
+          $ref: 'access.yaml#/components/schemas/Network'
+
+    Country:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/Code'
+ 
+    Code:
+      type: string
+
