@@ -9,7 +9,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Object'
+              $ref: '#/components/schemas/Body'
       responses:
         '201':
           description: Created
@@ -19,11 +19,11 @@ paths:
                 type: string
 components:
   schemas:
-    Object:
+    Body:
       type: object
       properties:
         p1:
           type: string
         p2:
-          $ref: '#/components/schemas/Object'
+          $ref: 'a.yaml#/components/schemas/Object'
  

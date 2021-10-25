@@ -1,0 +1,15 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Title
+paths: {}
+components:
+  schemas:
+    Object:
+      type: object
+      properties:
+        p1:
+          type: string
+        p2:
+          $ref: 'test.yaml#/components/schemas/Body'
+ 
