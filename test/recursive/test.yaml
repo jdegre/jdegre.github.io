@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Title
+paths:
+  /foo:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Object'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    Object:
+      type: object
+      properties:
+        p1:
+          type: string
+        p2:
+          $ref: '#/components/schemas/Object'
+ 
