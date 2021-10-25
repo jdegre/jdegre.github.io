@@ -14,8 +14,8 @@ components:
           type: string
         producerSetId:
           type: string
-       nwdafEvSub:
-         $ref: 'a.yaml#/components/schemas/NnwdafEventsSubscription'
+        nwdafEvSub:
+          $ref: 'a.yaml#/components/schemas/NnwdafEventsSubscription'
       allOf:
         - anyOf:
           - required: [producerId]
