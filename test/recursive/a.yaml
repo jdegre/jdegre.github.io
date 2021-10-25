@@ -5,11 +5,31 @@ info:
 paths: {}
 components:
   schemas:
-    Object:
+    NnwdafEventsSubscription:
       type: object
       properties:
-        p1:
+        eventSubscriptions:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        evtReq:
           type: string
-        p2:
-          $ref: 'test.yaml#/components/schemas/Body'
- 
+        notificationURI:
+          type: string
+        supportedFeatures:
+          type: string
+        eventNotifications:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        failEventReports:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        prevSub:
+          $ref: 'b.yaml#/components/schemas/SpecificAnalyticsSubscription'
+      required:
+        - eventSubscriptions

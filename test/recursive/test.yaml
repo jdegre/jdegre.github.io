@@ -9,7 +9,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Body'
+              type: string
       responses:
         '201':
           description: Created
@@ -19,11 +19,14 @@ paths:
                 type: string
 components:
   schemas:
-    Body:
+    NwdafSubscription:
       type: object
       properties:
-        p1:
+        nwdafEvtSubsServiceUri:
           type: string
-        p2:
-          $ref: 'a.yaml#/components/schemas/Object'
+        nwdafEventsSubscription:
+          $ref: 'a.yaml#/components/schemas/NnwdafEventsSubscription'
+      required:
+        - nwdafEvtSubsServiceUri
+        - nwdafEventsSubscription
  

@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Title
+paths: {}
+components:
+  schemas:
+    SpecificAnalyticsSubscription:
+      type: object
+      properties:
+        subscriptionId:
+          type: string
+        producerId:
+          type: string
+        producerSetId:
+          type: string
+       nwdafEvSub:
+         $ref: 'a.yaml#/components/schemas/NnwdafEventsSubscription'
+      allOf:
+        - anyOf:
+          - required: [producerId]
+          - required: [producerSetId]
+        - required: [subscriptionId]
+        - required: [nwdafEvSub]
