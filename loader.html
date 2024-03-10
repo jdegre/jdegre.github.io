@@ -11,7 +11,7 @@
   if (urlParams.has('branch')) branch = urlParams.get('branch');
   else {
     branch = '';
-    ref = document.referrer;
+    ref = document.referrer.split('?')[0];
     console.log(ref);
     id1 = ref.indexOf(repo);
     if (id1 != -1) {
